@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Login Test Suite" verbose="4" parallel="tests"
+	thread-count="4">
+
+	<test name="Login Test Positive">
+		<parameter name="username" value="student" />
+		<parameter name="password" value="Password123" />
+		<classes>
+			<class name="com.qa.login.tests.LoginPageTest">
+				<methods>
+					<include name="loggedInPageURLTest" />
+					<include name="loggedInPageTitleTest" />
+					<include name="loggedInPageSuccessMsgTest" />
+					<include name="loggedInPageLogOutLinkTest" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Login Test Incorrect Username">
+		<parameter name="username" value="incorrectUser" />
+		<parameter name="password" value="Password123" />
+		<classes>
+			<class name="com.qa.login.tests.LoginPageTest">
+				<methods>
+					<include name="negativeUsernameLoginTest" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+	<test name="Login Test Incorrect Password">
+		<parameter name="username" value="student" />
+		<parameter name="password" value="incorrectPassword" />
+		<classes>
+			<class name="com.qa.login.tests.LoginPageTest">
+				<methods>
+					<include name="negativePasswordLoginTest" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
